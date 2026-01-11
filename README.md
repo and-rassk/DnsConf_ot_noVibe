@@ -1,8 +1,9 @@
+🌐 Languages: [󠁧󠁢󠁥󠁮󠁧󠁿**English**](README.md) | [**Русский**](README.ru.md)
 
 # DNS Block&Redirect Configurer
 **Allows to set Redirect and Block rules to your Cloudflare and NextDNS accounts.**
 
-**Ready-to-run via GitHub Actions.**
+**Ready-to-run via GitHub Actions.** [Video guide](#step-by-step-video-guide-redirect-for-nextdns)
 
 [General comparison: Cloudflare vs NextDNS](#cloudflare-vs-nextdns)
 
@@ -66,12 +67,13 @@ https://first.com/hosts,https://second.com/hosts
 ### 1) Setup Redirects
 Set sources to **environment variable** `REDIRECT`
 
-Script will parse sources, filtering out redirects to `0.0.0.0`
+Script will parse sources, filtering out redirects to `0.0.0.0` and `127.0.0.1`
 
 Thus, parsing lines:
 
     0.0.0.0 domain.to.block
     1.2.3.4 domain.to.redirect
+    127.0.0.1 another.to.block
 
 will keep only `1.2.3.4 domain.to.redirect` for the further redirect processing.
 
@@ -123,6 +125,11 @@ For `BLOCK`:
 Previously generated data is removed **ONLY** when both `BLOCK` and `REDIRECT` sources were not provided.
 
 ## GitHub Actions setup
+
+#### Step-by-step video guide: [REDIRECT for NextDNS](https://www.youtube.com/watch?v=vbAXM_xAL5I)
+
+#### Steps
+
 1) Fork repository
 2) Go _Settings_ => _Environments_
 3) Create _New environment_ with name `DNS`
